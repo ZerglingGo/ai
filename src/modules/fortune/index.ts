@@ -6,35 +6,26 @@ import * as seedrandom from 'seedrandom';
 import { genItem } from '@/vocabulary';
 
 export const blessing = [
-	'藍吉',
-	'ヨタ吉',
-	'ゼタ吉',
-	'エクサ吉',
-	'ペタ吉',
-	'テラ吉',
-	'ギガ吉',
-	'メガ吉',
-	'キロ吉',
-	'ヘクト吉',
-	'デカ吉',
-	'デシ吉',
-	'センチ吉',
-	'ミリ吉',
-	'マイクロ吉',
-	'ナノ吉',
-	'ピコ吉',
-	'フェムト吉',
-	'アト吉',
-	'ゼプト吉',
-	'ヨクト吉',
-	'超吉',
-	'大大吉',
-	'大吉',
-	'吉',
-	'中吉',
-	'小吉',
-	'凶',
-	'大凶',
+	'테라길',
+	'기가길',
+	'메가길',
+	'킬로길',
+	'헥토길',
+	'데카길',
+	'데시길',
+	'센티길',
+	'밀리길',
+	'마이크로길',
+	'나노길',
+	'피코길',
+	'초길',
+	'대대길',
+	'대길',
+	'길',
+	'중길',
+	'소길',
+	'흉',
+	'대흉',
 ];
 
 export default class extends Module {
@@ -49,7 +40,7 @@ export default class extends Module {
 
 	@autobind
 	private async mentionHook(msg: Message) {
-		if (msg.includes(['占', 'うらな', '運勢', 'おみくじ'])) {
+		if (msg.includes(['점', '운세', '점괘', '오미쿠지'])) {
 			const date = new Date();
 			const seed = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}@${msg.userId}`;
 			const rng = seedrandom(seed);

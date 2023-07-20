@@ -55,7 +55,7 @@ export default class extends Module {
 			});
 
 			chart = {
-				title: `@${params.user.username}さんの投稿数`,
+				title: `@${params.user.username}님의 게시물 수`,
 				datasets: [{
 					data: data.diffs.normal
 				}, {
@@ -72,7 +72,7 @@ export default class extends Module {
 			});
 
 			chart = {
-				title: `@${params.user.username}さんのフォロワー数`,
+				title: `@${params.user.username}님의 팔로워 수`,
 				datasets: [{
 					data: data.local.followers.total
 				}, {
@@ -95,7 +95,7 @@ export default class extends Module {
 				}]
 			};
 		} else {
-			const suffixes = ['の売り上げ', 'の消費', 'の生産'];
+			const suffixes = ['의 판매', '의 소비', '의 생산'];
 
 			const limit = 30;
 			const diffRange = 150;
@@ -143,8 +143,8 @@ export default class extends Module {
 		}
 
 		let type = 'random';
-		if (msg.includes(['フォロワー'])) type = 'followers';
-		if (msg.includes(['投稿'])) type = 'userNotes';
+		if (msg.includes(['팔로워'])) type = 'followers';
+		if (msg.includes(['게시물'])) type = 'userNotes';
 
 		const file = await this.genChart(type, {
 			user: msg.user
