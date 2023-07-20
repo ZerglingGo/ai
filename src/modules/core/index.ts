@@ -4,7 +4,7 @@ import Message from '@/message';
 import serifs from '@/serifs';
 import { safeForInterpolate } from '@/utils/safe-for-interpolate';
 
-const titles = ['さん', 'くん', '君', 'ちゃん', '様', '先生'];
+const titles = ['님', '씨', '군', '쨩', '박사님', '선생님'];
 
 export default class extends Module {
 	public readonly name = 'core';
@@ -33,7 +33,7 @@ export default class extends Module {
 	@autobind
 	private transferBegin(msg: Message): boolean  {
 		if (!msg.text) return false;
-		if (!msg.includes(['引継', '引き継ぎ', '引越', '引っ越し'])) return false;
+		if (!msg.includes(['인계', '이사'])) return false;
 
 		const code = msg.friend.generateTransferCode();
 
@@ -63,10 +63,10 @@ export default class extends Module {
 	@autobind
 	private setName(msg: Message): boolean  {
 		if (!msg.text) return false;
-		if (!msg.text.includes('って呼んで')) return false;
-		if (msg.text.startsWith('って呼んで')) return false;
+		if (!msg.text.includes('라고 불러')) return false;
+		if (msg.text.startsWith('라고 불러')) return false;
 
-		const name = msg.text.match(/^(.+?)って呼んで/)![1];
+		const name = msg.text.match(/^(.+?)라고 불러/)![1];
 
 		if (name.length > 10) {
 			msg.reply(serifs.core.tooLong);
@@ -117,7 +117,7 @@ export default class extends Module {
 	@autobind
 	private version(msg: Message): boolean  {
 		if (!msg.text) return false;
-		if (!msg.or(['v', 'version', 'バージョン'])) return false;
+		if (!msg.or(['v', 'version', '버전'])) return false;
 
 		msg.reply(`\`\`\`\nv${this.ai.version}\n\`\`\``, {
 			immediate: true
@@ -135,10 +135,10 @@ export default class extends Module {
 			this.unsubscribeReply(key);
 		};
 
-		if (msg.text.includes('はい')) {
-			msg.friend.updateName(data.name + 'さん');
+		if (msg.text.includes('웅','네','응','ㅇㅇ')) {
+			msg.friend.updateName(data.name + '님');
 			done();
-		} else if (msg.text.includes('いいえ')) {
+		} else if (msg.text.includes('아니','아니오','아뇨','ㄴㄴ','맞아')) {
 			msg.friend.updateName(data.name);
 			done();
 		} else {

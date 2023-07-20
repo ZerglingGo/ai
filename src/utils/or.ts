@@ -31,12 +31,12 @@ export default function(text: string, words: (string | RegExp)[]): boolean {
 				text = text.replace(/ー+$/, '') + ((typeof word == 'string' && word[word.length - 1] == 'ー') ? 'ー' : '');
 
 				text = text.replace(/。$/, '');
-				text = text.replace(/です$/, '');
+				text = text.replace(/요$/, '');
 				text = text.replace(/(\.|…)+$/, '');
 				text = text.replace(/[♪♥]+$/, '');
-				text = text.replace(/^藍/, '');
-				text = text.replace(/^ちゃん/, '');
-				text = text.replace(/、+$/, '');
+				text = text.replace(/^아이/, '');
+				text = text.replace(/^쨩/, '');
+				text = text.replace(/,+$/, '');
 			}
 
 			let textBefore = text;
