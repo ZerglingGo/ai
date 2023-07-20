@@ -135,10 +135,10 @@ export default class extends Module {
 			this.unsubscribeReply(key);
 		};
 
-		if (msg.text.includes('웅','네','응','ㅇㅇ')) {
+		if (msg.includes(['웅', '네', '응', 'ㅇㅇ', '맞아'])) {
 			msg.friend.updateName(data.name + '님');
 			done();
-		} else if (msg.text.includes('아니','아니오','아뇨','ㄴㄴ','맞아')) {
+		} else if (msg.includes(['아니','아니오','아뇨','ㄴㄴ'])) {
 			msg.friend.updateName(data.name);
 			done();
 		} else {

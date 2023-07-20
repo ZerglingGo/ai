@@ -108,21 +108,9 @@ export default class extends Module {
 
 	@autobind
 	private erait(msg: Message): boolean {
-		const match = msg.extractedText.match(/(.+?)(했는데|하는데)(칭찬해줘/);
+		const match = msg.extractedText.match(/(.+?)\s?(([했하]는데)|(((했으)|하)니까?))\s?(칭찬\s?해\s?줘)/);
 		if (match) {
 			msg.reply(getSerif(serifs.core.erait.specify(match[1], msg.friend.name)));
-			return true;
-		}
-
-		const match2 = msg.extractedText.match(/(.+?)(했으니까|하니까)(칭찬해줘/);
-		if (match2) {
-			msg.reply(getSerif(serifs.core.erait.specify(match2[1], msg.friend.name)));
-			return true;
-		}
-
-		const match3 = msg.extractedText.match(/(.+?)니까(칭찬해줘/);
-		if (match3) {
-			msg.reply(getSerif(serifs.core.erait.specify(match3[1], msg.friend.name)));
 			return true;
 		}
 
